@@ -83,7 +83,7 @@
 		                                    <div class="prof-img">
 		                                        <img src="img/pic.jpg"></img>
 		                                        <div class="img-title">
-		                                            <h2 id="H1"></h2>
+		                                            <h2 id="asbas_name"></h2>
 		                                        </div>
 		                                    </div>
 		                                </div>

@@ -77,7 +77,10 @@ Public Class Handler : Implements IHttpHandler, IRequiresSessionState
         End If
         Dim self_name As String = data1.NAME
         Dim self_table As List(Of jsongogo) = JsonConvert.DeserializeObject(Of List(Of jsongogo))(data1.u03T_BILL)
-        Dim family_table_temp As List(Of jsongogo) = JsonConvert.DeserializeObject(Of List(Of jsongogo))(data1.FAMILY)
+        Dim family_table_temp As New List(Of jsongogo)
+        If Not data1.FAMILY Is Nothing Then
+            family_table_temp = JsonConvert.DeserializeObject(Of List(Of jsongogo))(data1.FAMILY)
+        End If
         Dim family_table As New List(Of jsongogo)
         Dim self_table_mul, family_table_mul As combine_json_date
         

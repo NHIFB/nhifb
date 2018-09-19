@@ -152,3 +152,18 @@ $(document).ready(function () {
     });
 
 });
+/***************go to top *************************/
+$(function () {
+    $("#gotop").click(function () {
+        jQuery("html,body").animate({
+            scrollTop: 0
+        }, 500);
+    });
+    $(window).scroll(function () {
+        if ($(this).scrollTop() > 400) {
+            $('#gotop').fadeIn("fast");
+        } else {
+            $('#gotop').stop().fadeOut("fast");
+        }
+    });
+});
