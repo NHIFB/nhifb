@@ -1,0 +1,315 @@
+div.timeline-frame {
+    -moz-box-sizing: border-box;
+    border: 1px solid #bebebe;
+    box-sizing: border-box;
+    overflow: hidden;
+    position: relative;
+    background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
+
+}
+
+
+div.timeline-content {
+    overflow: hidden;
+    position: relative;
+}
+
+div.timeline-axis {
+    -moz-box-sizing: border-box;
+    border-color: #bebebe;
+    border-top-style: solid;
+    border-width: 3px;
+    box-sizing: border-box;
+}
+
+div.timeline-axis-grid {
+    -moz-box-sizing: border-box;
+    border-left-style: solid;
+    border-width: 1px;
+    box-sizing: border-box;
+}
+
+div.timeline-axis-grid-minor {
+    border-color: #e5e5e5;
+}
+
+div.timeline-axis-grid-major {
+    border-color: #bfbfbf;
+}
+
+div.timeline-axis-text {
+    color: #4d4d4d;
+    padding: 3px;
+    white-space: nowrap;
+}
+
+div.timeline-axis-text-minor {
+}
+
+div.timeline-axis-text-major {
+}
+
+div.timeline-event {
+    -moz-box-sizing: border-box;
+    background-color:#92c7eb;
+    border-color: #97b0f8;
+    box-sizing: border-box;
+    color: #1a1a1a;
+    display: inline-block;
+    opacity:0.7;
+}
+
+div.timeline-event-selected {
+    background-image: linear-gradient(0deg, #edbe9e 0%, #fff 100%);
+    border-color: #edbe9e;
+    z-index: 999;
+    opacity:1;
+    box-shadow: 0 0 15px #4b576f;
+}
+
+/* TODO: use another color or pattern? */
+div.timeline-event-cluster {
+    background: url('img/cluster_bg.png') #97b0f8;
+    color: #ffffff;
+}
+
+div.timeline-event-cluster div.timeline-event-dot {
+    border-color: #d5ddf6;
+}
+
+div.timeline-event-box {
+    -moz-border-radius: 5px; /* For Firefox 3.6 and older */
+    border-radius: 5px;
+    border-style: solid;
+    border-width: 1px;
+    text-align: center;
+}
+
+div.timeline-event-dot {
+    -moz-border-radius: 5px; /* For Firefox 3.6 and older */
+    border-radius: 5px;
+    border-style: solid;
+    border-width: 5px;
+}
+
+div.timeline-event-range {
+    -moz-border-radius: 2px; /* For Firefox 3.6 and older */
+    border-radius: 5px;
+    border-style: solid;
+    border-width: 1px;
+}
+
+div.timeline-event-range-drag-left {
+    cursor: w-resize;
+    z-index: 1000;
+}
+
+div.timeline-event-range-drag-right {
+    cursor: e-resize;
+    z-index: 1000;
+}
+
+div.timeline-event-line {
+    -moz-box-sizing: border-box;
+    border-left-style: solid;
+    border-left-width: 1px;
+    box-sizing: border-box;
+}
+
+div.timeline-event-content {
+    margin: 5px;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+div.timeline-groups-axis {
+    -moz-box-sizing: border-box;
+    border-color: #bebebe;
+    border-width: 1px;
+    box-sizing: border-box;
+}
+
+div.timeline-groups-axis-onleft {
+    border-style: none solid none none;
+}
+
+div.timeline-groups-axis-onright {
+    border-style: none none none solid;
+}
+
+div.timeline-groups-text {
+    color: #4d4d4d;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+div.timeline-currenttime {
+    -moz-box-sizing: border-box;
+    background-color: #ff7f6e;
+    box-sizing: border-box;
+    width: 2px;
+}
+
+div.timeline-customtime {
+    -moz-box-sizing: border-box;
+    background-color: #6e94ff;
+    box-sizing: border-box;
+    cursor: move;
+    width: 2px;
+}
+
+div.timeline-navigation {
+    -moz-border-radius: 2px; /* For Firefox 3.6 and older */
+    -moz-box-sizing: border-box;
+    background-color: #f5f5f5;
+    border: 1px solid #bebebe;
+    border-radius: 20px;
+    box-sizing: border-box;
+    color: #808080;
+    font-family: arial;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+div.timeline-navigation-new,
+div.timeline-navigation-delete,
+div.timeline-navigation-zoom-in,
+div.timeline-navigation-zoom-out,
+div.timeline-navigation-move-left,
+div.timeline-navigation-move-right {
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    cursor: pointer;
+    float: left;
+    /*height: 36px;*/
+    padding: 5px;
+    text-decoration: none;
+    width: 36px;
+}
+
+div.timeline-navigation-new {
+    background: url('img/16/new.png') no-repeat center;
+}
+
+/* separator between new and navigation buttons */
+div.timeline-navigation-new-line {
+    border-right: 1px solid #bebebe;
+}
+
+div.timeline-navigation-delete {
+    background: url('img/16/delete.png') no-repeat center;
+}
+
+/**************************************************************/
+/***********************Custom css*****************************/
+/**************************************************************/
+#gotop {
+    font-size:20px;
+    position:fixed;
+    z-index:90;
+    right:30px;
+    bottom:31px;
+    display:none;
+    width:50px;
+    height:50px;
+    color:#fff;
+    background:#33b5e5;
+    line-height:50px;
+    border-radius:50%;
+    transition:all 0.5s;
+    text-align:center;
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16), 0 2px 10px 0 rgba(0,0,0,0.12);
+}
+
+
+/***************information button start******************/
+ .btn_info {
+            background-color: DodgerBlue;
+            border: none;
+            color: white;
+            /*float:right;*/
+            border-radius: 30%; 
+            margin-left: 5px;
+        }
+
+   /* Royal background on mouse-over */
+.btn_info:hover {
+     background-color: RoyalBlue;
+}
+/***************information button end *******************/
+
+
+
+
+/************ 1070830 appended by Andy ****************/
+div.parent-style {
+    background: #aeddbb;
+    border-color:  #aeddbb;
+}
+
+div .timeline-event-selected.parent-style {
+     /* custom colors for selected orange items */
+    background-image: linear-gradient(0deg, #aeddbb 0%, #fff 100%);
+    border-color: #aeddbb;
+    z-index: 999;
+    opacity:1;
+    box-shadow: 0 0 15px #4b576f;
+}
+.table-striped > tbody > tr:nth-child(2n+1) > td, .table-striped > tbody > tr:nth-child(2n+1) > th {
+   background-color: #b0e7f2;
+}
+/**********1070903 new card panel*****************/
+.card {
+    background-color: #ffffff;
+    border: 1px solid rgba(0, 34, 51, 0.1);
+    box-shadow: 2px 4px 10px 0 rgba(0, 34, 51, 0.05), 2px 4px 10px 0 rgba(0, 34, 51, 0.05);
+    border-radius: 0.15rem;
+}
+
+/* Tabs Card */
+
+.tab-card {
+  border:1px solid #eee;
+}
+
+.tab-card-header {
+  background:none;
+}
+/* Default mode */
+.tab-card-header > .nav-tabs {
+  border: none;
+  margin: 0px;
+}
+.tab-card-header > .nav-tabs > li {
+  margin-right: 2px;
+}
+.tab-card-header > .nav-tabs > li > a {
+  border: 0;
+  border-bottom:2px solid transparent;
+  margin-right: 0;
+  color: #737373;
+  padding: 2px 15px;
+}
+
+.tab-card-header > .nav-tabs > li > a.show {
+    border-bottom:2px solid #007bff;
+    color: #007bff;
+}
+.tab-card-header > .nav-tabs > li > a:hover {
+    color: #007bff;
+}
+
+.tab-card-header > .tab-content {
+  padding-bottom: 0;
+}
+
+
+
+.hidden {
+ display:none;
+}
+
+.insinfo_table {
+    margin-bottom:7%;
+}
+

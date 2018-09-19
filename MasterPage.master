@@ -1,0 +1,177 @@
+﻿<%@ Master Language="VB" CodeFile="MasterPage.master.vb" Inherits="MasterPage" %>
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1" runat="server">
+    <title>NHI_FB</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <meta http-equiv="X-UA-Compatible" content =" IE=edge"/>
+    
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous"/>
+    <link href="css/dashboard.css" rel="stylesheet"/>
+    <link href="css/new_timeline.css" rel="stylesheet"/>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="js/timeline.js"></script>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+<script>
+    $(function () {
+        $("[id$=Button1]").click(function () {
+            var queryId = $('#tbAlert').val();
+            var ptrn = new RegExp('^[A-Z][0-9]{9}$');
+            if (queryId.match(ptrn)) {
+                //把使用者輸入的ID存入session
+                $.ajax({
+                    type: 'post',
+                    url: 'Handler.ashx' + '?callback=?',
+                    async: false,
+                    data: '_Type=' + 'setSessQueryID' + '&queryId=' + queryId,
+                    dataType: 'jsonp',
+                    success: function (msg) {
+                        if (msg.status === 'success') {
+                            document.location.href = "Default.aspx";
+                        }
+                        else {
+                            alert('將ID加密或存入session時發生錯誤！');
+                            alert('>>>' + msg);
+                        }
+                    }
+                }); //end ajax
+            }
+            else
+                alert('不是正確的身分證字號格式！');
+        })
+    })
+</script>
+</head>
+<body>
+       <style>
+        #overlay {
+            background: #ffffff;
+            color: #666666;
+            position: fixed;
+            height: 100%;
+            width: 100%;
+            z-index: 5000;
+            top: 0;
+            left: 0;
+            float: left;
+            text-align: center;
+            padding-top: 25%;
+        }
+    </style>
+    <div id="overlay">
+        <img src="img/loading.gif" alt="Loading" /><br/>
+        Loading...
+    </div>
+    <script>
+        jQuery(window).load(function () {
+            jQuery('#overlay').fadeOut();
+        });
+</script>
+    <script src="js/test.js"></script>
+    <script src="js/front.js"></script>
+    <div class="page">
+    <header class="header">
+        <nav class="navbar">
+            <!-- Search Box-->
+          <!--<div class="search-box">
+            <button class="dismiss"><i class="fa fa-times"></i></button>
+            
+            <form id="searchForm" action="#" role="search">
+              <input type="search" placeholder="請輸入身分證字號..." class="form-control" id="tbAlert"/>
+              <button class="search" id="Button1"  ><i class="fa fa-search"></i></button>
+            </form>
+          </div>-->
+          <div class="container-fluid">
+                <div class="navbar-holder d-flex align-items-start justify-content-between">
+              <!-- Navbar Header-->
+              <div class="navbar-header">
+                <!-- Navbar Brand --><a href="index.html" class="navbar-brand d-none d-sm-inline-block">
+                  <div class="brand-text d-none d-lg-inline-block"><span>NHIFB </span><strong>Demo</strong></div>
+                  <div class="brand-text d-none d-sm-inline-block d-lg-none"><strong>NHI</strong></div></a>
+                <!-- Toggle Button--><a id="toggle-btn" href="#" class="menu-btn active"><span></span><span></span><span></span></a>
+              </div>
+
+ 
+                <div class="search-box-wrapper">
+                    <input type="text" class="search-box-input" placeholder="Search" id="tbAlert" />
+                        <button class="btn search-box-btn" type="submit"  id="Button1">&#128269;</button>
+                </div>
+            
+              
+              <!-- Navbar Menu -->
+              <ul class="nav-menu list-unstyled d-flex flex-md-row align-items-md-center">
+                <li class="nav-item d-flex align-items-center">
+                   <!-- <a id="search" href="#" style="padding:10px;"><i class="fa fa-search"></i></a>-->
+                    
+                </li>
+                <!-- Notifications-->
+                <li class="nav-item "> <a id="notifications" href="#"  class="nav-link"><i class="fa fa-bell-o"></i><span class="badge bg-red badge-corner">12</span></a>
+         
+                </li>
+                <!-- Home Page -->
+                <li class="nav-item d-flex align-items-center"><a id="home" href="Default.aspx" style="padding:10px;"><i class="fa fa-home"></i></a></li>
+               
+                <!-- Logout    -->
+                <li class="nav-item"><a href="login.html" class="nav-link logout"> <span class="d-none d-sm-inline">登出</span><i class="fa fa-sign-out"></i></a></li>
+              </ul>
+            </div>
+          </div><!--end container fluid-->
+        </nav>
+    </header>
+        <div class="page-content d-flex align-items-stretch">
+            <nav class="side-navbar">
+              <!-- Sidebar Header-->
+              <div class="sidebar-header d-flex align-items-center">
+                <div class="avatar"><img src="img/pic.jpg" alt="photo" class="img-fluid rounded-circle"></div>
+                <div class="title">
+                  <h1 class="h4">湯姆漢克</h1>
+                  <p>你好</p>
+                </div>
+              </div>
+              <!-- Sidebar Navidation Menus--><span class="heading">Main</span>
+              <ul class="list-unstyled">
+                        <li class="active"><a href="U02T_ASBAS.aspx">  <i class="fa fa-home"></i>基本資料 </a></li>
+                        <li><a href="U03T_BILL.aspx"> <i class="fa fa-dollar"></i>保費紀錄 </a></li>
+                        <li><a href="#"> <i class="fa fa-cut"></i>減免資格 </a></li>
+                        
+                        <li><a href="#Dropdown" aria-expanded="false" data-toggle="collapse"><i class="	fa fa-th-list"></i>財務檔 </a>
+                          <ul id="Dropdown" class="collapse list-unstyled ">
+                            <li><a href="#"><i class="fa fa-dollar"></i>保費紀錄</a></li>
+                            <li><a href="#"><i class="fa fa-users"></i>保費紀錄-眷屬</a></li>
+                            <li><a href="#"><i class="fa fa-cut"></i>減免資格</a></li>
+                          </ul>
+                        </li>
+                    
+              </ul><!--
+                <span class="heading">Extras</span>
+                <ul class="list-unstyled">
+                <li> <a href="#"> <i class="fa fa-flask"></i>Demo </a></li>
+                <li> <a href="#"> <i class="fa fa-flask"></i>Demo </a></li>
+                <li> <a href="#"> <i class="fa fa-flask"></i>Demo </a></li>
+                <li> <a href="#"> <i class="fa fa-flask"></i>Demo </a></li>
+              </ul>-->
+            </nav>
+            <asp:contentplaceholder id="bodyContentPlaceHolder" runat="server">
+            </asp:contentplaceholder>
+        </div>
+
+    </div>
+    
+    <!-- Main block end-->
+    <div id="gotop" title="back to top">
+        <i class="fa fa-arrow-up"></i>
+    </div>
+    
+    
+</body>
+    <!--<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+</html>
